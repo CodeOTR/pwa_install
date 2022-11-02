@@ -1,8 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:pwa_install/app/router.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_portal/flutter_portal.dart';
+import 'package:pwa_install/firebase_options.dart';
 import 'package:stacked/stacked.dart';
 import '../app/get_it.dart';
 import '../app/themes/light_theme.dart';
@@ -10,6 +12,10 @@ import '../app/themes/light_theme.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
+
+  await Firebase.initializeApp(
+  options: DefaultFirebaseOptions.currentPlatform,
+);
   runApp(
     MaterialApp(
       theme: lightTheme,

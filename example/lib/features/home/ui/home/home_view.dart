@@ -15,12 +15,19 @@ class HomeView extends StatelessWidget {
       },
       builder: (context, model, child) {
         return Scaffold(
-            body: Column(
-              children: [
-                Container()
-              ],
-            )
-        );
+            body: Center(
+              child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+              Text('1'),
+              ElevatedButton(
+                  onPressed: () {},
+                  child: Text('Install'
+                      ''))
+          ],
+        ),
+            ));
       },
     );
   }
