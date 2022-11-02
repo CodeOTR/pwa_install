@@ -22,39 +22,39 @@ class ToastService {
     String no = 'Cancel',
   }) async {
     return await showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              title: Text(title),
-              actions: [
-                TextButton(
-                  child: Text(no),
-                  onPressed: () {
-                    router.pop();
-                  },
-                ),
-                TextButton(
-                  child: Text(
-                    yes,
-                    style: TextStyle(color: Colors.red),
-                  ),
-                  onPressed: () {
-                    router.pop();
-                  },
-                )
-              ],
-            );
-          },
-        ) ??
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(title),
+          actions: [
+            TextButton(
+              child: Text(no),
+              onPressed: () {
+                router.pop();
+              },
+            ),
+            TextButton(
+              child: Text(
+                yes,
+                style: TextStyle(color: Colors.red),
+              ),
+              onPressed: () {
+                router.pop();
+              },
+            )
+          ],
+        );
+      },
+    ) ??
         false;
   }
 
   Future<bool> confirmLeave(
-    BuildContext context, {
-    String title = 'Exit the app?',
-    String yes = 'Exit',
-    String no = 'Stay',
-  }) async {
+      BuildContext context, {
+        String title = 'Exit the app?',
+        String yes = 'Exit',
+        String no = 'Stay',
+      }) async {
     bool leave = false;
     await showDialog(
       context: context,

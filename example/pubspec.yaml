@@ -23,8 +23,8 @@ dependencies:
   firebase_auth: ^4.1.0
   firebase_core: ^2.1.1
   flutterfire_ui: ^0.4.3+18
-  firebase_remote_config: ^3.0.3
   firebase_storage: ^11.0.3
+  firebase_remote_config: ^3.0.3
   flutter_portal: ^1.1.2
   gap: ^2.0.0
   get_it: ^7.2.0

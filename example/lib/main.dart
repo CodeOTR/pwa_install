@@ -34,7 +34,7 @@ class App extends StatelessWidget {
           theme: lightTheme,
           routeInformationParser: router.routeInformationParser,
           routerDelegate: router.routerDelegate,
-          title: 'Healthy Pet Connect Dashboard',
+          title: 'PWA Install',
         ),
       ),
     );

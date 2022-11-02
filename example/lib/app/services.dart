@@ -6,6 +6,8 @@ import 'package:pwa_install/features/shared/services/system_service.dart';
 import 'package:pwa_install/features/shared/services/time_service.dart';
 import 'package:pwa_install/features/shared/services/toast_service.dart';
 
+import '../features/shared/services/app_service.dart';
+
 
 AppService get appService {
   return GetIt.instance.get<AppService>();
