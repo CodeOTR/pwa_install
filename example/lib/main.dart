@@ -1,5 +1,5 @@
-import 'package:clinky/app/go_router.dart';
-import 'package:clinky/shared/observers/basic_navigator_observer.dart';
+import 'package:pwa_install_view/app/go_router.dart';
+import 'package:pwa_install_view/shared/observers/basic_navigator_observer.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -33,8 +33,8 @@ class App extends StatelessWidget {
       child: Portal(
         child: MaterialApp.router(
           theme: lightTheme,
-          routeInformationParser: goRouter.routeInformationParser,
-          routerDelegate: goRouter.routerDelegate,
+          routeInformationParser: router.routeInformationParser,
+          routerDelegate: router.routerDelegate,
           title: 'Healthy Pet Connect Dashboard',
         ),
       ),

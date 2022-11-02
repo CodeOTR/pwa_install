@@ -1,4 +1,4 @@
-name: pwa_install_example
+name: pwa_install
 description: Post about all your different interests
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
@@ -23,6 +23,7 @@ dependencies:
   firebase_auth: ^4.1.0
   firebase_core: ^2.1.1
   flutterfire_ui: ^0.4.3+18
+  firebase_remote_config: ^3.0.3
   firebase_storage: ^11.0.3
   flutter_portal: ^1.1.2
   gap: ^2.0.0

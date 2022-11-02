@@ -51,7 +51,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.mullr.pwa_install_example_view"
+        applicationId "com.mullr.pwa_install_view"
         minSdkVersion 21
         targetSdkVersion 32
         multiDexEnabled true

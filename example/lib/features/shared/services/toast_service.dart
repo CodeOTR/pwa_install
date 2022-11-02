@@ -1,7 +1,6 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:pwa_install_example_view/services/utilities/navigation_service.dart';
+import 'package:pwa_install/app/router.dart';
 
 /// Service for displaying toasts, snackbars, banners, or other
 /// temporary info boxes
@@ -32,7 +31,7 @@ class ToastService {
                 TextButton(
                   child: Text(no),
                   onPressed: () {
-                    AutoRouter.of(context).pop(false);
+                    router.pop(false);
                   },
                 ),
                 TextButton(
@@ -41,7 +40,7 @@ class ToastService {
                     style: TextStyle(color: Colors.red),
                   ),
                   onPressed: () {
-                    AutoRouter.of(context).pop(true);
+                    router.pop(true);
                   },
                 )
               ],
@@ -68,7 +67,7 @@ class ToastService {
               child: Text(no),
               onPressed: () async {
                 leave = false;
-                await GetIt.instance.get<NavigationServiceInterface>().back();
+                router.pop();
               },
             ),
             TextButton(

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mullr.pwa_install_example">
+    package="com.mullr.pwa_install">
     <application
         android:label=""
         >
