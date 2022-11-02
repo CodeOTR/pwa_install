@@ -1,14 +1,14 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import '../../../app/app_router.dart';
-import 'package:simple_animations/stateless_animation/mirror_animation.dart';
 import 'package:stacked/stacked.dart';
 
 import 'not_connected_view_model.dart';
 
 class NotConnectedView extends StatelessWidget {
   const NotConnectedView({Key? key}) : super(key: key);
+
+  get router => null;
 
   @override
   Widget build(BuildContext context) {
@@ -23,17 +23,9 @@ class NotConnectedView extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Center(
-                    child: MirrorAnimation(
-                      tween: Tween<double>(begin: 2, end: 4),
-                      builder: (context, child, double value) {
-                        return Transform.scale(
-                          scale: value,
-                          child: const Icon(Icons.wifi_off,
-                            size: 36,),
-                        );
-                      },
-                    ),
+                  const Center(
+                    child: Icon(Icons.wifi_off,
+                      size: 36,),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(48.0),
@@ -47,7 +39,7 @@ class NotConnectedView extends StatelessWidget {
                     ),
                   ),
                   OutlinedButton(onPressed: () {
-                    appRouter.pop();
+                    router.pop();
                   }, child:Text('Go Back',
                     style: Theme.of(context).textTheme.subtitle1,))
                 ],

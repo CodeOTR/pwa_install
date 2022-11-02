@@ -1,5 +1,4 @@
-import 'package:pwa_install_view/app/go_router.dart';
-import 'package:pwa_install_view/shared/observers/basic_navigator_observer.dart';
+import 'package:pwa_install/app/router.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

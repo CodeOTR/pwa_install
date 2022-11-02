@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:pwa_install/app/router.dart';
 
 /// Service for displaying toasts, snackbars, banners, or other
@@ -31,7 +30,7 @@ class ToastService {
                 TextButton(
                   child: Text(no),
                   onPressed: () {
-                    router.pop(false);
+                    router.pop();
                   },
                 ),
                 TextButton(
@@ -40,7 +39,7 @@ class ToastService {
                     style: TextStyle(color: Colors.red),
                   ),
                   onPressed: () {
-                    router.pop(true);
+                    router.pop();
                   },
                 )
               ],
@@ -77,7 +76,7 @@ class ToastService {
               ),
               onPressed: () async {
                 leave = true;
-                await GetIt.instance.get<NavigationServiceInterface>().back();
+                router.pop();
               },
             )
           ],

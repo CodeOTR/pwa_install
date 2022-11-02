@@ -10,11 +10,11 @@ final GoRouter router = GoRouter(
         return const HomeView();
       },
     ),
-    GoRoute(
+   /* GoRoute(
       path: '/b',
       builder: (BuildContext context, GoRouterState state) {
         return ScreenB();
       },
-    ),
+    ),*/
   ],
 );
