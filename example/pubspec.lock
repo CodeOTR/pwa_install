@@ -281,13 +281,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.2"
-  csslib:
-    dependency: transitive
-    description:
-      name: csslib
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.17.2"
   dart_style:
     dependency: transitive
     description:
@@ -550,13 +543,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_native_splash:
-    dependency: "direct dev"
-    description:
-      name: flutter_native_splash
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.2.13"
   flutter_portal:
     dependency: "direct main"
     description:
@@ -622,7 +608,7 @@ packages:
       name: go_router
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.1.1"
+    version: "5.1.2"
   google_fonts:
     dependency: "direct main"
     description:
@@ -672,13 +658,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.0"
-  html:
-    dependency: transitive
-    description:
-      name: html
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.15.1"
   http:
     dependency: transitive
     description:
@@ -736,7 +715,7 @@ packages:
     source: hosted
     version: "1.0.3"
   js:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: js
       url: "https://pub.dartlang.org"

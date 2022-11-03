@@ -1,15 +1,13 @@
 import 'package:stacked/stacked.dart';
 
-class HomeViewModel extends BaseViewModel{
+class HomeViewModel extends BaseViewModel {
 
-  void initialize(){
+  int taps = 0;
 
+  void increment(){
+    taps++;
+    notifyListeners();
   }
 
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-  }
-
+  void initialize() {}
 }
