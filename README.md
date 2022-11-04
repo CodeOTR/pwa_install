@@ -70,7 +70,12 @@ Future<void> main() async {
 ```
 
 ## 3. Check if the Install Prompt is enabled
-Before calling the `promptInstall_()` method, you can check if the Install Prompt is available using `PWAInstall().installPromptEnabled()`. `installPromptEnabled()` will be true if the app was launched in a browser and the `beforeinstallprompt` event was captured. It doesn't make sense to prompt a PWA install if the app is already running as a PWA.
+Before calling the `promptInstall_()` method, you can check if the Install Prompt is available using `PWAInstall().installPromptEnabled()`. 
+
+`installPromptEnabled()` will be true if:
+
+- [x] The app was launched in a browser (It doesn't make sense to prompt a PWA install if the app is already running as a PWA)
+- [x] The `beforeinstallprompt` event was captured. 
 
 `promptInstall_()` won't do anything if `installPromptEnabled()` is false so you should check this flag before attempting to call the prompt.  
 
