@@ -33,13 +33,15 @@ void setLaunchModeTWA() {
   PWAInstall().launchMode = LaunchMode.twa;
 }
 
-@JS("setHasPrompt")
-external void _setHasPrompt();
+/// Function that gets called from JavaScript when a install prompt has been detected
+@JS("hasPrompt")
+external set _hasPrompt(void Function() f);
 
 @JS()
-external void setHasPrompt();
+external void hasPrompt();
 
-void setHasPrompt_(){
+void setHasPrompt(){
+   debugPrint('Browser has install prompt');
   PWAInstall().hasPrompt = true;
 }
 
@@ -62,11 +64,6 @@ void setLaunchModeBrowser() {
   PWAInstall().launchMode = LaunchMode.browser;
 }
 
-/// Function that gets called from JavaScript when a install prompt has been detected
-@JS("hasPrompt")
-external set _hasPrompt(void Function() f);
-
-
 /// JavaScript functions that are called from Dart
 /// Show the PWA install prompt if it exists
 @JS("promptInstall")
@@ -87,11 +84,21 @@ class PWAInstall {
 
   PWAInstall._internal();
 
+  /// This value will be true if the browser attempted to prompt the user to install the app as a PWA
+  /// If the browser did not attempt to show the install prompt, the beforeinstallprompt event was not received
+  /// and this Flutter package will not be able to show a new prompt
   bool hasPrompt = false;
 
+  /// The LaunchMode of the app indicates how the app was launched. This may be as a PWA/TWA or in the browser
   LaunchMode? launchMode;
 
+  /// An optional callback that will be fired when the user installs your app as a PWA from the install prompt
   Function? onAppInstalled;
+
+  /// installButtonEnabled will be true if the app was not already launched as a PWA or TWA and
+  /// the browser prompted the user to install the app already. The browser needs to have presented the
+  /// prompt because we are capturing that event and reusing it
+  bool get installButtonEnabled => hasPrompt && launchMode != LaunchMode.pwa && launchMode != LaunchMode.twa;
 
   void getLaunchMode_() => getLaunchMode();
 
@@ -105,7 +112,7 @@ class PWAInstall {
     // JavaScript code may now call `appLaunchedAsTWA()` or `window.appLaunchedAsTWA()`.
     _appLaunchedAsTWA = allowInterop(setLaunchModeTWA);
 
-    _hasPrompt = allowInterop(setLaunchModeTWA);
+    _hasPrompt = allowInterop(setHasPrompt);
     _appInstalled = allowInterop(() {
       if (onAppInstalled != null) onAppInstalled!();
     });
