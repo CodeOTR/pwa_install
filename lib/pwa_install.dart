@@ -15,6 +15,10 @@ external set _appLaunchedAsTWA(void Function() f);
 @JS("appLaunchedInBrowser")
 external set _appLaunchedInBrowser(void Function() f);
 
+/// Function that gets called from JavaScript when the app is installed as a PWA
+@JS("appInstalled")
+external set _appInstalled(void Function() f);
+
 @JS()
 external void appLaunchedAsPWA();
 
@@ -30,6 +34,9 @@ void setLaunchModeTWA() {
   debugPrint('Launched as TWA');
   PWAInstall().launchMode = LaunchMode.twa;
 }
+
+@JS()
+external void appInstalled();
 
 @JS()
 external void appLaunchedInBrowser();
@@ -60,18 +67,24 @@ class PWAInstall {
 
   LaunchMode? launchMode;
 
+  Function? onAppInstalled;
+
   void getLaunchMode_() => getLaunchMode();
 
   void promptInstall_() => promptInstall();
 
-  void setup() {
+  void setup({Function? installCallback}) {
     // JavaScript code may now call `appLaunchedAsPWA()` or `window.appLaunchedAsPWA()`.
     _appLaunchedAsPWA = allowInterop(setLaunchModePWA);
     // JavaScript code may now call `appLaunchedInBrowser()` or `window.appLaunchedInBrowser()`.
     _appLaunchedInBrowser = allowInterop(setLaunchModeBrowser);
     // JavaScript code may now call `appLaunchedAsTWA()` or `window.appLaunchedAsTWA()`.
     _appLaunchedAsTWA = allowInterop(setLaunchModeTWA);
+    _appInstalled = allowInterop((){
+      if(onAppInstalled != null) onAppInstalled!();
+    });
     getLaunchMode_();
+    onAppInstalled = installCallback;
   }
 }
 

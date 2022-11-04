@@ -82,15 +82,14 @@
       // hideInstallPromotion();
       // Clear the deferredPrompt so it can be garbage collected
       deferredPrompt = null;
-      // Optionally, send analytics event to indicate successful install
-      console.log('PWA was installed');
+
     });
 
     // Track how PWA was launched (either from browser or as PWA)
     function getLaunchMode() {
       const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
       if (document.referrer.startsWith('android-app://')) {
-        appLaunchedAsPWA(); //return 'twa';
+        appLaunchedAsTWA();
       } else if (navigator.standalone || isStandalone) {
         appLaunchedAsPWA();
       } else {
