@@ -3,21 +3,15 @@ library pwa_install;
 import 'package:flutter/material.dart';
 import 'package:js/js.dart';
 
+/// Functions that are called from JavaScript
+/// Three parts:
+/// 1. external set _functionName(void Function() f);
+/// 2. external void functionName();
+/// 3. The actual Dart function
+///
 /// Function that gets called from JavaScript code if app was launched as a PWA
 @JS("appLaunchedAsPWA")
 external set _appLaunchedAsPWA(void Function() f);
-
-/// Function that gets called from JavaScript code if app was launched as a TWA
-@JS("appLaunchedAsTWA")
-external set _appLaunchedAsTWA(void Function() f);
-
-/// Function that gets called from JavaScript code if app was launched from a browser
-@JS("appLaunchedInBrowser")
-external set _appLaunchedInBrowser(void Function() f);
-
-/// Function that gets called from JavaScript when the app is installed as a PWA
-@JS("appInstalled")
-external set _appInstalled(void Function() f);
 
 @JS()
 external void appLaunchedAsPWA();
@@ -27,6 +21,10 @@ void setLaunchModePWA() {
   PWAInstall().launchMode = LaunchMode.pwa;
 }
 
+/// Function that gets called from JavaScript code if app was launched as a TWA
+@JS("appLaunchedAsTWA")
+external set _appLaunchedAsTWA(void Function() f);
+
 @JS()
 external void appLaunchedAsTWA();
 
@@ -35,8 +33,26 @@ void setLaunchModeTWA() {
   PWAInstall().launchMode = LaunchMode.twa;
 }
 
+@JS("setHasPrompt")
+external void _setHasPrompt();
+
+@JS()
+external void setHasPrompt();
+
+void setHasPrompt_(){
+  PWAInstall().hasPrompt = true;
+}
+
+/// Function that gets called from JavaScript when the app is installed as a PWA
+@JS("appInstalled")
+external set _appInstalled(void Function() f);
+
 @JS()
 external void appInstalled();
+
+/// Function that gets called from JavaScript code if app was launched from a browser
+@JS("appLaunchedInBrowser")
+external set _appLaunchedInBrowser(void Function() f);
 
 @JS()
 external void appLaunchedInBrowser();
@@ -46,6 +62,12 @@ void setLaunchModeBrowser() {
   PWAInstall().launchMode = LaunchMode.browser;
 }
 
+/// Function that gets called from JavaScript when a install prompt has been detected
+@JS("hasPrompt")
+external set _hasPrompt(void Function() f);
+
+
+/// JavaScript functions that are called from Dart
 /// Show the PWA install prompt if it exists
 @JS("promptInstall")
 external void promptInstall();
@@ -65,6 +87,8 @@ class PWAInstall {
 
   PWAInstall._internal();
 
+  bool hasPrompt = false;
+
   LaunchMode? launchMode;
 
   Function? onAppInstalled;
@@ -80,8 +104,10 @@ class PWAInstall {
     _appLaunchedInBrowser = allowInterop(setLaunchModeBrowser);
     // JavaScript code may now call `appLaunchedAsTWA()` or `window.appLaunchedAsTWA()`.
     _appLaunchedAsTWA = allowInterop(setLaunchModeTWA);
-    _appInstalled = allowInterop((){
-      if(onAppInstalled != null) onAppInstalled!();
+
+    _hasPrompt = allowInterop(setLaunchModeTWA);
+    _appInstalled = allowInterop(() {
+      if (onAppInstalled != null) onAppInstalled!();
     });
     getLaunchMode_();
     onAppInstalled = installCallback;

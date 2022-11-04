@@ -1,41 +1,62 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:pwa_install/pwa_install.dart';
-import 'package:pwa_install_example/app/router.dart';
-import 'package:pwa_install_example/firebase_options.dart';
-import 'package:stacked/stacked.dart';
-
-import '../app/get_it.dart';
-import '../app/themes/light_theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  configureDependencies();
 
-  PWAInstall().setup();
+  PWAInstall().setup(installCallback: () {
+    debugPrint('APP INSTALLED!');
+  });
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-
-  runApp(
-    MaterialApp(
-      theme: lightTheme,
-      home: App(),
-    ),
-  );
+  runApp(MaterialApp(home: App()));
 }
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      theme: lightTheme,
-      routeInformationParser: router.routeInformationParser,
-      routerDelegate: router.routerDelegate,
+    return MaterialApp(
+      home: HomeView(),
       title: 'PWA Install',
     );
   }
 }
 
-class AppModel extends BaseViewModel {}
+class HomeView extends StatefulWidget {
+  const HomeView({Key? key}) : super(key: key);
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+
+  String? error;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text('6'),
+              Text('Launch Mode: ${PWAInstall().launchMode?.shortLabel}'),
+              Text('Has Install Prompt: ${PWAInstall().hasPrompt}'),
+              if(!(PWAInstall().launchMode?.installed ?? false)) ElevatedButton(
+                  onPressed: () {
+                    try {
+                      PWAInstall().promptInstall_();
+                    } catch (e) {
+                      setState(() {
+                        error = e.toString();
+                      });
+                    }
+                  },
+                  child: const Text('Install')),
+              if (error != null) Text(error!)
+            ],
+          ),
+        ));
+  }
+}

@@ -10,62 +10,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-  badges: ^2.0.3
-  blurhash: ^1.0.0
-  breakpoint: ^1.2.0
-  cached_network_image: ^3.2.2
-  cloud_firestore: ^4.0.3
-  cloud_functions: ^4.0.3
-  connectivity_plus: ^3.0.2
-  detectable_text_field: ^2.0.4
-  device_info_plus: ^8.0.0
-  dots_indicator: ^2.1.0
-  firebase_auth: ^4.1.0
   firebase_core: ^2.1.1
-  flutterfire_ui: ^0.4.3+18
-  firebase_storage: ^11.0.3
-  firebase_remote_config: ^3.0.3
-  gap: ^2.0.0
-  get_it: ^7.2.0
-  go_router: ^5.1.1
-  google_fonts: ^3.0.1
-  injectable: ^1.5.4
-  json_serializable: ^6.5.4
-  package_info_plus: ^3.0.1
   pwa_install:
     path: ./../../pwa_install
-  share_plus: ^6.2.0
-  shared_preferences: ^2.0.15
-  simple_animations: ^5.0.0+2
-  sliver_tools: ^0.2.8
-  stacked: ^3.0.0
-  timeago: ^3.3.0
-  transparent_image: ^2.0.0
-  url_launcher: ^6.1.6
-  universal_io: ^2.0.4
-
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  build_runner: ^2.3.2
-  flutter_launcher_icons: ^0.10.0
-  flutter_lints: ^2.0.1
-  injectable_generator: ^1.5.4
-  json_annotation: ^4.7.0
-
-# flutter pub run flutter_launcher_icons:main
-#flutter_icons:
- # android: "launcher_icon"
-  #ios: true
-  #image_path: "assets/images/logo.png"
-  #remove_alpha_ios: true
-
-# flutter pub run flutter_native_splash:create
-#flutter_native_splash:
- # color: "#ffffff"
-  #image: "assets/images/logo.png"
 
 flutter:
   uses-material-design: true
