@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pwa_install/js/display_mode.dart';
-import 'package:pwa_install/js/prompt.dart';
-import 'package:pwa_install/main.dart';
+import 'package:pwa_install/pwa_install.dart';
 import 'package:stacked/stacked.dart';
-
 import 'home_view_model.dart';
 
 class HomeView extends StatelessWidget {
@@ -14,7 +11,6 @@ class HomeView extends StatelessWidget {
     return ViewModelBuilder<HomeViewModel>.reactive(
       viewModelBuilder: () => HomeViewModel(),
       onModelReady: (model) {
-        getPWADisplayMode();
         model.notifyListeners();
       },
       builder: (context, model, child) {
@@ -25,14 +21,11 @@ class HomeView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text('5'),
-              Text('Launch Mode: $launchMode'),
-              if(launchMode != 'PWA') ElevatedButton(
+              Text('Launch Mode: ${PWAInstall().launchMode?.shortLabel}'),
+              if(!(PWAInstall().launchMode?.installed ?? false)) ElevatedButton(
                   onPressed: () {
                     try {
-                      //var object = js.JsObject(js.context['Object']);
-                      //object.callMethod('promptInstall');
-                      //alertMessage('hi');
-                      promptInstall();
+                      PWAInstall().promptInstall();
                     } catch (e) {
                       model.setError(e.toString());
                       model.increment();

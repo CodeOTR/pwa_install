@@ -1,10 +1,9 @@
 import 'package:get_it/get_it.dart';
-import 'package:pwa_install/features/authentication/services/firebase_service.dart';
-import 'package:pwa_install/features/shared/services/app_service.dart';
-import 'package:pwa_install/features/shared/services/string_service.dart';
-import 'package:pwa_install/features/shared/services/system_service.dart';
-import 'package:pwa_install/features/shared/services/time_service.dart';
-import 'package:pwa_install/features/shared/services/toast_service.dart';
+import 'package:pwa_install_example/features/authentication/services/firebase_service.dart';
+import 'package:pwa_install_example/features/shared/services/string_service.dart';
+import 'package:pwa_install_example/features/shared/services/system_service.dart';
+import 'package:pwa_install_example/features/shared/services/time_service.dart';
+import 'package:pwa_install_example/features/shared/services/toast_service.dart';
 
 import '../features/shared/services/app_service.dart';
 

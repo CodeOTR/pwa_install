@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pwa_install/app/router.dart';
+import 'package:pwa_install_example/app/router.dart';
 
 /// Service for displaying toasts, snackbars, banners, or other
 /// temporary info boxes
