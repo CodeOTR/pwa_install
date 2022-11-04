@@ -1,7 +1,7 @@
 library pwa_install;
 
-import 'package:flutter/material.dart';
-import 'package:js/js.dart';
+import 'package:flutter/foundation.dart';
+import  'package:pwa_install/js_stub.dart' if (dart.library.js) 'package:js/js.dart';
 
 /// Functions that are called from JavaScript
 /// Three parts:
@@ -40,8 +40,8 @@ external set _hasPrompt(void Function() f);
 @JS()
 external void hasPrompt();
 
-void setHasPrompt(){
-   debugPrint('Browser has install prompt');
+void setHasPrompt() {
+  debugPrint('Browser has install prompt');
   PWAInstall().hasPrompt = true;
 }
 
@@ -105,6 +105,8 @@ class PWAInstall {
   void promptInstall_() => promptInstall();
 
   void setup({Function? installCallback}) {
+    if (!kIsWeb) return;
+
     // JavaScript code may now call `appLaunchedAsPWA()` or `window.appLaunchedAsPWA()`.
     _appLaunchedAsPWA = allowInterop(setLaunchModePWA);
     // JavaScript code may now call `appLaunchedInBrowser()` or `window.appLaunchedInBrowser()`.
