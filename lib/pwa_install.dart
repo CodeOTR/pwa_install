@@ -15,48 +15,54 @@ external set _appLaunchedAsTWA(void Function() f);
 @JS("appLaunchedInBrowser")
 external set _appLaunchedInBrowser(void Function() f);
 
+@JS()
+external void appLaunchedAsPWA();
+
+void setLaunchModePWA() {
+  debugPrint('Launched as PWA');
+  PWAInstall().launchMode = LaunchMode.pwa;
+}
+
+@JS()
+external void appLaunchedAsTWA();
+
+void setLaunchModeTWA() {
+  debugPrint('Launched as TWA');
+  PWAInstall().launchMode = LaunchMode.twa;
+}
+
+@JS()
+external void appLaunchedInBrowser();
+
+void setLaunchModeBrowser() {
+  debugPrint('Launched in Browser');
+  PWAInstall().launchMode = LaunchMode.browser;
+}
+
+/// Show the PWA install prompt if it exists
+@JS("promptInstall")
+external void promptInstall();
+
+/// Fetch the launch mode of the app from JavaScript
+/// The launch mode is determined by checking the display-mode media query value
+/// https://web.dev/customize-install/#track-how-the-pwa-was-launched
+@JS("getLaunchMode")
+external void getLaunchMode();
+
 class PWAInstall {
   static final PWAInstall _pwaInstall = PWAInstall._internal();
 
-  factory PWAInstall() => _pwaInstall;
+  factory PWAInstall() {
+    return _pwaInstall;
+  }
 
   PWAInstall._internal();
 
   LaunchMode? launchMode;
 
-  @JS()
-  external void appLaunchedAsPWA();
+  void getLaunchMode_() => getLaunchMode();
 
-  void setLaunchModePWA() {
-    debugPrint('Launched as PWA');
-    launchMode = LaunchMode.pwa;
-  }
-
-  @JS()
-  external void appLaunchedAsTWA();
-
-  void setLaunchModeTWA() {
-    debugPrint('Launched as TWA');
-    launchMode = LaunchMode.twa;
-  }
-
-  @JS()
-  external void appLaunchedInBrowser();
-
-  void setLaunchModeBrowser() {
-    debugPrint('Launched in Browser');
-    launchMode = LaunchMode.browser;
-  }
-
-  /// Show the PWA install prompt if it exists
-  @JS("promptInstall")
-  external void promptInstall();
-
-  /// Fetch the launch mode of the app from JavaScript
-  /// The launch mode is determined by checking the display-mode media query value
-  /// https://web.dev/customize-install/#track-how-the-pwa-was-launched
-  @JS("getLaunchMode")
-  external void getLaunchMode();
+  void promptInstall_() => promptInstall();
 
   void setup() {
     // JavaScript code may now call `appLaunchedAsPWA()` or `window.appLaunchedAsPWA()`.
@@ -65,7 +71,7 @@ class PWAInstall {
     _appLaunchedInBrowser = allowInterop(setLaunchModeBrowser);
     // JavaScript code may now call `appLaunchedAsTWA()` or `window.appLaunchedAsTWA()`.
     _appLaunchedAsTWA = allowInterop(setLaunchModeTWA);
-    getLaunchMode();
+    getLaunchMode_();
   }
 }
 

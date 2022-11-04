@@ -20,12 +20,12 @@ class HomeView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('5'),
+              const Text('6'),
               Text('Launch Mode: ${PWAInstall().launchMode?.shortLabel}'),
               if(!(PWAInstall().launchMode?.installed ?? false)) ElevatedButton(
                   onPressed: () {
                     try {
-                      PWAInstall().promptInstall();
+                      PWAInstall().promptInstall_();
                     } catch (e) {
                       model.setError(e.toString());
                       model.increment();

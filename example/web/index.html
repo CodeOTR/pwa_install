@@ -87,7 +87,7 @@
     });
 
     // Track how PWA was launched (either from browser or as PWA)
-    function getPWADisplayMode() {
+    function getLaunchMode() {
       const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
       if (document.referrer.startsWith('android-app://')) {
         appLaunchedAsPWA(); //return 'twa';
