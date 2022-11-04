@@ -43,7 +43,7 @@ class _HomeViewState extends State<HomeView> {
               const Text('6'),
               Text('Launch Mode: ${PWAInstall().launchMode?.shortLabel}'),
               Text('Has Install Prompt: ${PWAInstall().hasPrompt}'),
-              if(PWAInstall().installButtonEnabled) ElevatedButton(
+              if(PWAInstall().installPromptEnabled) ElevatedButton(
                   onPressed: () {
                     try {
                       PWAInstall().promptInstall_();

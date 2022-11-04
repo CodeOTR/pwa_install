@@ -95,10 +95,10 @@ class PWAInstall {
   /// An optional callback that will be fired when the user installs your app as a PWA from the install prompt
   Function? onAppInstalled;
 
-  /// installButtonEnabled will be true if the app was not already launched as a PWA or TWA and
+  /// installPromptEnabled will be true if the app was not already launched as a PWA or TWA and
   /// the browser prompted the user to install the app already. The browser needs to have presented the
   /// prompt because we are capturing that event and reusing it
-  bool get installButtonEnabled => hasPrompt && launchMode != LaunchMode.pwa && launchMode != LaunchMode.twa;
+  bool get installPromptEnabled => hasPrompt && launchMode != LaunchMode.pwa && launchMode != LaunchMode.twa;
 
   void getLaunchMode_() => getLaunchMode();
 
