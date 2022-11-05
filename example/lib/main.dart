@@ -40,7 +40,7 @@ class _HomeViewState extends State<HomeView> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('6'),
+              const Text('Version: 6'),
               Text('Launch Mode: ${PWAInstall().launchMode?.shortLabel}'),
               Text('Has Install Prompt: ${PWAInstall().hasPrompt}'),
               if(PWAInstall().installPromptEnabled) ElevatedButton(

@@ -77,6 +77,14 @@ Before calling the `promptInstall_()` method, you can check if the Install Promp
 ## 4. Call PWAInstall().promptInstall_()
 Finally, call `PWAInstall().promptInstall_()` to show the install prompt.
 
+# Prompt Config
+## App Name
+You can change the app name that's displayed in the prompt by updating the "name" field in web/manifest.json.
+![img.png](images/install_prompt_app_name.png)
+
+## App Logo
+The logo displayed in the prompt also comes from the web/manifest.json file. Specifically, the logo is specified under the "icons" field. 
+
 # Support
 <a href="https://buymeacoffee.com/mullr" target="_blank"><img align="left" src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 <br>
