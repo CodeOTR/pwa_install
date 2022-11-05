@@ -2,6 +2,8 @@
 
 # PWA Install
 A small Flutter package that allows you to prompt mobile web users to install your Flutter app as a [progressive web application](https://en.wikipedia.org/wiki/Progressive_web_app#:~:text=As%20of%202021%2C%20PWA%20features,not%20by%20Firefox%20for%20desktop.) (PWA) on demand.
+
+A very basic example can be found here: [PWA Install](https://pwa-install-c5c83.web.app/#/)
 > The contents of this package are based on this [article](https://web.dev/customize-install/) by Pete LePage (@petele)  
 
 ## Out-of-the-Box
@@ -88,7 +90,16 @@ You can change the app name that's displayed in the prompt by updating the "name
 ![img.png](images/install_prompt_app_name.png)
 
 ## App Logo
-The logo displayed in the prompt also comes from the web/manifest.json file. Specifically, the logo is specified under the "icons" field. 
+The logo displayed in the prompt also comes from the web/manifest.json file.
+1. (Optional) Use a website like [favicon.io](https://favicon.io/) to generate your web icons
+2. Add your logos to the web/icons folder
+![img.png](images/web_icons.png)
+3. Add the following lines to the <head> tag in index.html:
+```aidl
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+```
+![img.png](images/install_prompt_app_logo.png)
 
 # Support
 <a href="https://buymeacoffee.com/mullr" target="_blank"><img align="left" src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
