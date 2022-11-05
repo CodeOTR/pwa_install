@@ -93,7 +93,9 @@ You can change the app name that's displayed in the prompt by updating the "name
 The logo displayed in the prompt also comes from the web/manifest.json file.
 1. (Optional) Use a website like [favicon.io](https://favicon.io/) to generate your web icons
 2. Add your logos to the web/icons folder
+
 ![img.png](images/web_icons.png)
+
 3. Add the following lines to the <head> tag in index.html:
 ```aidl
 <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
