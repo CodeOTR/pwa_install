@@ -105,6 +105,11 @@ The logo displayed in the prompt also comes from the web/manifest.json file.
 ```
 ![img.png](https://raw.githubusercontent.com/jtmuller5/pwa_install/main/images/install_prompt_app_logo.png)
 
+# Troubleshooting
+## Supported Browsers
+You can find all supported browsers [here](https://developer.mozilla.org/en-US/docs/Web/API/BeforeInstallPromptEvent#browser_compatibility).
+
+
 # Support
 <a href="https://buymeacoffee.com/mullr" target="_blank"><img align="left" src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 <br>
