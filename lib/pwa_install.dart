@@ -1,7 +1,7 @@
 library pwa_install;
 
 import 'package:flutter/foundation.dart';
-import  'package:pwa_install/js_stub.dart' if (dart.library.js) 'package:js/js.dart';
+import 'package:pwa_install/js_stub.dart' if (dart.library.js) 'package:js/js.dart';
 
 /// Functions that are called from JavaScript
 /// Three parts:
@@ -102,7 +102,9 @@ class PWAInstall {
 
   void getLaunchMode_() => getLaunchMode();
 
-  void promptInstall_() => promptInstall();
+  void promptInstall_() {
+    if (hasPrompt) promptInstall();
+  }
 
   void setup({Function? installCallback}) {
     if (!kIsWeb) return;
