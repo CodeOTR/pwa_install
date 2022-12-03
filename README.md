@@ -117,7 +117,7 @@ In addition to the name and logo, you can also add optional [screenshots to the 
 ```
 
 Note that the screenshots will not appear in every browser. After they are added, your new install prompt will look like this:
-![images](images/app_screenshots.jpg)
+![images](https://raw.githubusercontent.com/jtmuller5/pwa_install/main/images/app_screenshots.jpg)
 
 # Troubleshooting
 ## Supported Browsers
