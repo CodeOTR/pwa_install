@@ -105,6 +105,20 @@ The logo displayed in the prompt also comes from the web/manifest.json file.
 ```
 ![img.png](https://raw.githubusercontent.com/jtmuller5/pwa_install/main/images/install_prompt_app_logo.png)
 
+## Screenshots
+In addition to the name and logo, you can also add optional [screenshots to the manifest.json file](https://web.dev/learn/pwa/web-app-manifest/#promotional-fields). 
+
+```aidl
+"screenshots": [{
+    "src": "images/app_screenshot.webp",
+    "platform": "windows",
+    "label": "PWA is the way!"
+  }],
+```
+
+Note that the screenshots will not appear in every browser. After they are added, your new install prompt will look like this:
+![images](images/app_screenshots.jpg)
+
 # Troubleshooting
 ## Supported Browsers
 You can find all supported browsers [here](https://developer.mozilla.org/en-US/docs/Web/API/BeforeInstallPromptEvent#browser_compatibility).

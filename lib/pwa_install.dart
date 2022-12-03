@@ -103,7 +103,11 @@ class PWAInstall {
   void getLaunchMode_() => getLaunchMode();
 
   void promptInstall_() {
-    if (hasPrompt) promptInstall();
+    if (hasPrompt) {
+      promptInstall();
+    } else {
+      throw 'This platform or browser does not support the PWA install prompt';
+    }
   }
 
   void setup({Function? installCallback}) {

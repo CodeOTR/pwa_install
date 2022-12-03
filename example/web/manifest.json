@@ -1,6 +1,10 @@
 {
   "name": "PWA Install",
   "short_name": "PWA Install",
+  "categories": [
+    "developer",
+    "developer tools"
+  ],
   "start_url": ".",
   "display": "standalone",
   "background_color": "#0175C2",
@@ -8,6 +12,18 @@
   "description": "A Flutter package that allows you to prompt mobile web users to install your Flutter app as a PWA",
   "orientation": "portrait-primary",
   "prefer_related_applications": false,
+  "screenshots": [
+    {
+      "src": "images/app_screenshot.webp",
+      "platform": "windows",
+      "label": "PWA is the way!"
+    },
+    {
+      "src": "images/app_screenshot_2.webp",
+      "platform": "windows",
+      "label": "PWA is the way!"
+    }
+  ],
   "icons": [
     {
       "src": "icons/android-chrome-192x192.png",
